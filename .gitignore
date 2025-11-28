@@ -1,5 +1,4 @@
-# ignorar voting_system.db crea el comando 
-# voting_system.db
 voting_system.db
 venv/
+
 __pycache__/
