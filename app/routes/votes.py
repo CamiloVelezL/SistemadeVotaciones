@@ -8,16 +8,16 @@ def create_voter():
     try:
         data = request.get_json()
         
-        # Validaciones requeridas
+        # Validaciones 
         if not data or not data.get('name') or not data.get('email'):
             return jsonify({'error': 'Name and email are required'}), 400
         
-        # Verificar que el email no esté registrado como votante
+        # Verificar  email 
         existing_voter = Voter.query.filter_by(email=data['email']).first()
         if existing_voter:
             return jsonify({'error': 'Email already registered as voter'}), 400
         
-        # Verificar que el email no esté registrado como candidato
+        # Verificar email no este como candidato
         existing_candidate = Candidate.query.filter_by(name=data['email']).first()
         if existing_candidate:
             return jsonify({'error': 'Email already registered as candidate'}), 400
