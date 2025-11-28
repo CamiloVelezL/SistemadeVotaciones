@@ -6,18 +6,18 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
     
-    #  base de datos
+    
     init_db(app)
     
         
     print("Templates path:", app.template_folder)
     
-    # Ruta Frontend
+   
     @app.route('/')
     def index():
         return render_template('index.html')
     
-    # Ruta de salud de la API
+    
     @app.route('/api/health')
     def health():
         return jsonify({"status": "OK"})
@@ -34,7 +34,7 @@ def create_app():
             }
         })
     
-    # blueprints
+    
     from app.routes.voters import bp as voters_bp
     from app.routes.candidates import bp as candidates_bp
     from app.routes.votes import bp as votes_bp
