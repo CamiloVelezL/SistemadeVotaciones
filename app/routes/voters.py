@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from app.models import db, Vote, Voter, Candidate
 import pandas as pd
 import matplotlib
-matplotlib.use('Agg')  # Para evitar problemas con threads
+matplotlib.use('Agg') 
 import matplotlib.pyplot as plt
 import os
 
@@ -13,7 +13,7 @@ def create_vote():
     try:
         data = request.get_json()
         
-        # Validaciones requeridas
+        #validaciones
         if not data or not data.get('voter_id') or not data.get('candidate_id'):
             return jsonify({'error': 'voter_id and candidate_id are required'}), 400
         
@@ -35,7 +35,7 @@ def create_vote():
         if voter_as_candidate:
             return jsonify({'error': 'A voter cannot be a candidate and vice versa'}), 400
         
-        # Verificar que el votante no haya votado previamente
+        
         if voter.has_voted:
             return jsonify({'error': 'Voter has already voted'}), 400
         
@@ -45,7 +45,7 @@ def create_vote():
             candidate_id=candidate_id
         )
         
-        # Actualizar automáticamente has_voted
+      
         voter.has_voted = True
         
         # Incrementar el conteo de votos del candidato
@@ -85,13 +85,13 @@ def get_voters():
 @bp.route('/votes/statistics', methods=['GET'])
 def get_statistics():
     try:
-        # Obtener todos los candidatos
+        
         candidates = Candidate.query.all()
         
-        # Calcular total de votos
+        
         total_votes = sum(candidate.votes for candidate in candidates)
         
-        # Calcular total de votantes que han votado
+        
         voted_voters = Voter.query.filter_by(has_voted=True).count()
         
         # Estadísticas por candidato
@@ -106,7 +106,7 @@ def get_statistics():
                 'percentage': round(percentage, 2)
             })
         
-        # Generar gráfica con pandas/matplotlib
+        # Generar gráfica con pandas
         generate_votes_chart(statistics)
         
         return jsonify({
@@ -125,38 +125,38 @@ def generate_votes_chart(statistics):
     if not statistics:
         return
     
-    # Crear DataFrame con pandas
+   
     df = pd.DataFrame(statistics)
     
-    # Configurar la gráfica
+    
     plt.figure(figsize=(12, 8))
     
-    # Crear gráfica de barras
+    
     bars = plt.bar(df['candidate_name'], df['votes'], color='skyblue', edgecolor='black')
     
-    # Personalizar la gráfica
+    
     plt.xlabel('Candidatos', fontsize=12, fontweight='bold')
     plt.ylabel('Votos', fontsize=12, fontweight='bold')
     plt.title('Resultados de la Votación - Distribución de Votos por Candidato', 
               fontsize=14, fontweight='bold', pad=20)
     
-    # Rotar etiquetas del eje x para mejor legibilidad
+    
     plt.xticks(rotation=45, ha='right')
     
-    # Añadir valores en las barras
+   
     for bar, votes, percentage in zip(bars, df['votes'], df['percentage']):
         height = bar.get_height()
         plt.text(bar.get_x() + bar.get_width()/2., height + 0.1,
                 f'{votes} votos\n({percentage}%)', 
                 ha='center', va='bottom', fontsize=9)
     
-    # Ajustar diseño
+    
     plt.tight_layout()
     
-    # Crear directorio static si no existe
+    
     if not os.path.exists('static'):
         os.makedirs('static')
     
-    # Guardar gráfica
+   
     plt.savefig('static/votes_chart.png', dpi=300, bbox_inches='tight')
     plt.close()
