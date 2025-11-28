@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Votaciones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-vote-yea"></i> Sistema de Votaciones</h1>
+            <p>Gestión completa de candidatos, votantes y votos</p>
+        </header>
+
+        <div class="dashboard">
+            <!-- Sección de Candidatos -->
+            <section class="card">
+                <h2><i class="fas fa-users"></i> Gestión de Candidatos</h2>
+                
+                <div class="form-section">
+                    <h3>Agregar Nuevo Candidato</h3>
+                    <form id="candidateForm" class="form">
+                        <div class="form-group">
+                            <input type="text" id="candidateName" placeholder="Nombre del candidato" required>
+                            <input type="text" id="candidateParty" placeholder="Partido político">
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Agregar Candidato
+                        </button>
+                    </form>
+                </div>
+
+                <div class="list-section">
+                    <h3>Lista de Candidatos</h3>
+                    <div class="actions">
+                        <button onclick="loadCandidates()" class="btn btn-secondary">
+                            <i class="fas fa-sync"></i> Actualizar Lista
+                        </button>
+                    </div>
+                    <div id="candidatesList" class="list-container">
+                        <div class="empty-state">
+                            <i class="fas fa-users"></i>
+                            <p>No hay candidatos registrados</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Votantes -->
+            <section class="card">
+                <h2><i class="fas fa-user-friends"></i> Gestión de Votantes</h2>
+                
+                <div class="form-section">
+                    <h3>Registrar Nuevo Votante</h3>
+                    <form id="voterForm" class="form">
+                        <div class="form-group">
+                            <input type="text" id="voterName" placeholder="Nombre completo" required>
+                            <input type="email" id="voterEmail" placeholder="Correo electrónico" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Registrar Votante
+                        </button>
+                    </form>
+                </div>
+
+                <div class="list-section">
+                    <h3>Lista de Votantes</h3>
+                    <div class="actions">
+                        <button onclick="loadVoters()" class="btn btn-secondary">
+                            <i class="fas fa-sync"></i> Actualizar Lista
+                        </button>
+                    </div>
+                    <div id="votersList" class="list-container">
+                        <div class="empty-state">
+                            <i class="fas fa-user-friends"></i>
+                            <p>No hay votantes registrados</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sección de Estadísticas -->
+        <section class="card">
+            <h2><i class="fas fa-chart-bar"></i> Estadísticas del Sistema</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <h3 id="totalCandidates">0</h3>
+                    <p>Candidatos Registrados</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalVoters">0</h3>
+                    <p>Votantes Registrados</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="votedCount">0</h3>
+                    <p>Han Votado</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mensajes del sistema -->
+        <div id="message" class="message hidden"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

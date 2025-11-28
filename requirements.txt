@@ -1,9 +1,8 @@
-fastapi # Web framework
-uvicorn # ASGI server
-sqlalchemy # ORM
-pydantic[email] # Data validation
-python-jose[cryptography] # JWT handling
-passlib[bcrypt] # Password hashing
-python-multipart # File uploads
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+PyMySQL==1.1.0
+pandas==2.0.3
+matplotlib==3.7.2
 
-#sqlite3 voting_system.db
+  http://127.0.0.1:5000
+  http://192.168.1.58:5000

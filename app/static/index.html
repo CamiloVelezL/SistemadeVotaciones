@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Votaciones</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema de Votaciones</h1>
+        </header>
+
+        <main>
+            <section id="candidates-section">
+                <h2>Candidatos</h2>
+                <div class="form-container">
+                    <h3>Agregar Candidato</h3>
+                    <form id="candidate-form">
+                        <input type="text" id="candidate-name" placeholder="Nombre" required>
+                        <input type="text" id="candidate-party" placeholder="Partido">
+                        <button type="submit">Agregar Candidato</button>
+                    </form>
+                </div>
+                <div class="list-container">
+                    <h3>Lista de Candidatos</h3>
+                    <ul id="candidates-list"></ul>
+                </div>
+            </section>
+
+            <section id="voters-section">
+                <h2>Votantes</h2>
+                <div class="form-container">
+                    <h3>Agregar Votante</h3>
+                    <form id="voter-form">
+                        <input type="text" id="voter-name" placeholder="Nombre" required>
+                        <input type="email" id="voter-email" placeholder="Email" required>
+                        <button type="submit">Agregar Votante</button>
+                    </form>
+                </div>
+                <div class="list-container">
+                    <h3>Lista de Votantes</h3>
+                    <ul id="voters-list"></ul>
+                </div>
+            </section>
+
+            <section id="votes-section">
+                <h2>Votos</h2>
+                <div class="form-container">
+                    <h3>Registrar Voto</h3>
+                    <form id="vote-form">
+                        <select id="voter-select" required>
+                            <option value="">Seleccione un votante</option>
+                        </select>
+                        <select id="candidate-select" required>
+                            <option value="">Seleccione un candidato</option>
+                        </select>
+                        <button type="submit">Registrar Voto</button>
+                    </form>
+                </div>
+                <div class="list-container">
+                    <h3>Votos Registrados</h3>
+                    <ul id="votes-list"></ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
