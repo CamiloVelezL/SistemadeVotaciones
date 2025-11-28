@@ -6,10 +6,10 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
     
-    # Inicializar base de datos
+    #  base de datos
     init_db(app)
     
-        # Imprimir la ruta de las plantillas
+        
     print("Templates path:", app.template_folder)
     
     # Ruta Frontend
@@ -22,7 +22,7 @@ def create_app():
     def health():
         return jsonify({"status": "OK"})
     
-    #  API
+  
     @app.route('/api/info')
     def api_info():
         return jsonify({
