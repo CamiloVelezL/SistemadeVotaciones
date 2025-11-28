@@ -245,12 +245,4 @@ CSS personalizado con variables CSS
 JavaScript vanilla para interactividad
 Diseño mobile-first responsive
 
-Para consultas técnicas o soporte sobre el sistema de votaciones.
 
-## **Archivos Adicionales Necesarios**
-### **requirements.txt**
-```txt
-Flask==2.3.3
-Flask-SQLAlchemy==3.0.5
-PyMySQL==1.1.0
-SQLAlchemy==2.0.20
