@@ -1,6 +1,6 @@
 const API_BASE = '/api';
 
-// Elementos del DOM
+// DOM
 const candidateForm = document.getElementById('candidateForm');
 const voterForm = document.getElementById('voterForm');
 const messageDiv = document.getElementById('message');
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadVoters();
     loadStats();
     
-    // Event listeners para formularios
+    // listeners para formularios
     candidateForm.addEventListener('submit', handleCandidateSubmit);
     voterForm.addEventListener('submit', handleVoterSubmit);
 });
@@ -46,7 +46,7 @@ async function handleCandidateSubmit(e) {
     }
 }
 
-// Manejar envío de formulario de votante
+// formulario de votante
 async function handleVoterSubmit(e) {
     e.preventDefault();
     
@@ -76,7 +76,7 @@ async function handleVoterSubmit(e) {
     }
 }
 
-// Cargar lista de candidatos 
+// lista de candidatos 
 async function loadCandidates() {
     const container = document.getElementById('candidatesList');
     container.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Cargando candidatos...</div>';
@@ -137,7 +137,7 @@ async function deleteCandidate(candidateId) {
     }
 }
 
-// Cargar lista de votantes
+// lista de votantes
 async function loadVoters() {
     const container = document.getElementById('votersList');
     container.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Cargando votantes...</div>';
