@@ -1,4 +1,3 @@
-// URLs de la API
 const API_BASE = '/api';
 
 // Elementos del DOM
@@ -6,7 +5,7 @@ const candidateForm = document.getElementById('candidateForm');
 const voterForm = document.getElementById('voterForm');
 const messageDiv = document.getElementById('message');
 
-// Inicializar la aplicación
+// Inicializar 
 document.addEventListener('DOMContentLoaded', function() {
     loadCandidates();
     loadVoters();
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     voterForm.addEventListener('submit', handleVoterSubmit);
 });
 
-// Manejar envío de formulario de candidato
+// formulario de candidato
 async function handleCandidateSubmit(e) {
     e.preventDefault();
     
@@ -77,7 +76,7 @@ async function handleVoterSubmit(e) {
     }
 }
 
-// Cargar lista de candidatos - VERSIÓN ACTUALIZADA CON BOTÓN ELIMINAR
+// Cargar lista de candidatos 
 async function loadCandidates() {
     const container = document.getElementById('candidatesList');
     container.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Cargando candidatos...</div>';
@@ -202,7 +201,7 @@ async function deleteVoter(voterId) {
     }
 }
 
-// Cargar estadísticas
+// estadísticas
 async function loadStats() {
     try {
         const [candidatesResponse, votersResponse] = await Promise.all([
@@ -223,7 +222,7 @@ async function loadStats() {
     }
 }
 
-// Mostrar mensajes al usuario
+// mensajes al usuario
 function showMessage(text, type) {
     messageDiv.textContent = text;
     messageDiv.className = `message ${type}`;
