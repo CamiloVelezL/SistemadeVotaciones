@@ -53,8 +53,7 @@ def delete_candidate(id):
         if not candidate:
             return jsonify({'error': 'Candidate not found'}), 404
         
-        # Validar que el candidato no tenga votos asociados
-        # (Agregaremos esta validación cuando tengamos el modelo de votos)
+       
         
         db.session.delete(candidate)
         db.session.commit()
